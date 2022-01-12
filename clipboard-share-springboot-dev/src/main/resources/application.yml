@@ -1,0 +1,31 @@
+server:
+  port: 20388
+
+Spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.2.211:3306/clip_db?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: root2021
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 15
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: DataHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  type-aliases-package: com.clipboard.share.entity
+  global-config:
+    db-config:
+      capital-mode: true
+      id-type: auto
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
